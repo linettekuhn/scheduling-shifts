@@ -12,7 +12,7 @@ export const createShift = async (input: Shift) => {
   return created;
 };
 
-export const deleteShift = async ({ id }: Shift) => {
+export const deleteShift = async (id: number) => {
   const [deleted] = await db
     .delete(shifts)
     .where(eq(shifts.id, id))
