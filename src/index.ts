@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import CaregiverRouter from "./routes/caregiver.routes";
 import PatientRouter from "./routes/patient.routes";
 import ShiftRouter from "./routes/shift.routes";
@@ -6,6 +7,15 @@ import { env } from "./config/env";
 import { errorHandler } from "./middleware/errorHandler";
 
 const app = express();
+
+// middleware to parse json
+app.use(express.json());
+app.use(
+  cors({
+    origin: env.ALLOWED_ORIGIN,
+    credentials: true,
+  }),
+);
 
 // caregiver router
 app.use("/caregiver", CaregiverRouter);
@@ -15,9 +25,6 @@ app.use("/patient", PatientRouter);
 
 // shift router
 app.use("/shift", ShiftRouter);
-
-// middleware to parse json
-app.use(express.json());
 
 // error middleware (last)
 app.use(errorHandler);
