@@ -15,9 +15,9 @@ export const shifts = pgTable("shifts", {
   start_time: timestamp("start_time").notNull(),
   end_time: timestamp("end_time").notNull(),
   patient_id: integer("patient_id")
-    .references(() => patients.id)
+    .references(() => patients.id, { onDelete: "cascade" })
     .notNull(),
   caregiver_id: integer("caregiver_id")
-    .references(() => caregivers.id)
+    .references(() => caregivers.id, { onDelete: "cascade" })
     .notNull(),
 });
