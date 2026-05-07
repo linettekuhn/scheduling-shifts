@@ -22,7 +22,7 @@ export const create = async (
   try {
     const { name } = req.body;
     if (!name) {
-      res.send(400).json({ error: "Missing name" });
+      res.status(400).json({ error: "Missing name" });
     }
 
     const created = await PatientService.createPatient({ id: 0, name });
@@ -40,7 +40,7 @@ export const remove = async (
   try {
     const id = Number(req.params.id);
     if (!id) {
-      res.send(400).json({ error: "Missing id" });
+      res.status(400).json({ error: "Missing id" });
     }
 
     const deleted = await PatientService.deletePatient(id);

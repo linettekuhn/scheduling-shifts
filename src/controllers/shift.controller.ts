@@ -22,7 +22,7 @@ export const create = async (
   try {
     const { start_time, end_time, patient_id, caregiver_id } = req.body;
     if (!start_time || !end_time || !patient_id || !caregiver_id) {
-      res.send(400).json({ error: "Missing shift data" });
+      res.status(400).json({ error: "Missing shift data" });
     }
 
     const created = await ShiftService.createShift({
@@ -45,7 +45,7 @@ export const remove = async (
   try {
     const id = Number(req.params.id);
     if (!id) {
-      res.send(400).json({ error: "Missing id" });
+      res.status(400).json({ error: "Missing id" });
     }
 
     const deleted = await ShiftService.deleteShift(id);
