@@ -43,7 +43,7 @@ export const remove = async (
       res.send(400).json({ error: "Missing id" });
     }
 
-    const deleted = await PatientService.deletePatient({ id, name: "" });
+    const deleted = await PatientService.deletePatient(id);
     res.json(deleted);
   } catch (error) {
     next(error);

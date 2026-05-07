@@ -12,7 +12,7 @@ export const createPatient = async ({ name }: Patient) => {
   return created;
 };
 
-export const deletePatient = async ({ id }: Patient) => {
+export const deletePatient = async (id: number) => {
   const [deleted] = await db
     .delete(patients)
     .where(eq(patients.id, id))

@@ -26,7 +26,6 @@ export const create = async (
     }
 
     const created = await ShiftService.createShift({
-      id: 0,
       start_time: new Date(start_time),
       end_time: new Date(end_time),
       patient_id: Number(patient_id),

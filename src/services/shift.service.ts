@@ -7,7 +7,7 @@ export const getAllShifts = async () => {
   return db.select().from(shifts);
 };
 
-export const createShift = async (input: Shift) => {
+export const createShift = async (input: Omit<Shift, "id">) => {
   const [created] = await db.insert(shifts).values(input).returning();
   return created;
 };

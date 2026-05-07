@@ -12,7 +12,7 @@ export const createCaregiver = async ({ name }: Caregiver) => {
   return created;
 };
 
-export const deleteCaregiver = async ({ id }: Caregiver) => {
+export const deleteCaregiver = async (id: number) => {
   const [deleted] = await db
     .delete(caregivers)
     .where(eq(caregivers.id, id))
